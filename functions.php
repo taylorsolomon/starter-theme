@@ -8,6 +8,8 @@
  * @since   Timber 0.1
  */
 
+require get_template_directory() . '/functions/blocks.php';
+
 /**
  * If you are installing Timber as a Composer dependency in your theme, you'll need this block
  * to load your dependencies and initialize Timber. If you are using Timber via the WordPress.org
@@ -65,6 +67,10 @@ class StarterSite extends Timber\Site {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+
+		add_action( 'admin_init', array($this, 'add_editor_styles') );
+		add_filter( 'block_categories', array($this, 'register_block_categories'), 10, 2);
+		add_action( 'acf/init', array($this, 'register_blocks') );
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
@@ -74,6 +80,28 @@ class StarterSite extends Timber\Site {
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
 
+	}
+
+	/**  This is where we initialize blocks for the theme */
+	public function register_blocks() {
+		waepa_add_product_block();
+	}
+
+	/**  This is where we enable customizing the editor experience */
+	public function add_editor_styles() {
+		add_editor_style( 'style-editor.css' );
+	}
+
+	/**
+	 * Create new block categories in Gutenberg
+	 */
+	public function register_block_categories( $categories, $post ) {
+		$homepage_category = [
+			'slug' => 'homepage',
+			'title' => __( 'Homepage', 'homepage' ),
+		];
+
+		return array_merge($categories,	[ $homepage_category ] );
 	}
 
 	/** This is where you add some context
@@ -141,6 +169,9 @@ class StarterSite extends Timber\Site {
 		);
 
 		add_theme_support( 'menus' );
+
+		// Tell WordPress that editor styles are being added
+		add_theme_support('editor-styles');
 	}
 
 	/** This Would return 'foo bar!'.

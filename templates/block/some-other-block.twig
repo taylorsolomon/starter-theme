@@ -1,0 +1,15 @@
+{#
+/**
+ * Block Name: Example block
+ *
+ * This is the template that displays the example block.
+ */
+#}
+
+{% if is_preview %}
+  <p>This is an example of how to customize the editor view of this block</p>
+{% endif %}
+
+<div id="example-{{ block.id }}" class="wrapper">
+  I'm some other block
+</div>

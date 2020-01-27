@@ -1,0 +1,81 @@
+/*
+ * Main column width
+ * This changes it from the default 580px to 720px
+ */
+ .wp-block {
+  max-width: 1280px;
+}
+
+/*
+* Width of "wide" blocks
+* This changes it from the default 1080px to 1280px
+*/
+.wp-block[data-align="wide"] {
+  max-width: 1280px;
+}
+
+.product-block {
+  background: pink;
+  padding: 4em 0 6em;
+}
+
+.product-block-inner {
+  margin: 0 auto;
+  padding: 0 2em;
+  max-width: 1366px;
+}
+
+.product-block-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.product-block-description {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.product-block-products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.product-block-products > .product-block-product {
+  flex: 1 1 0px;
+}
+
+.product-block-product {
+  border: 1px solid grey;
+  padding: 1rem 2rem;
+}
+.product-block-inner {
+  margin: 0 auto;
+  padding: 0 2em;
+  max-width: 1366px;
+}
+
+.product-block-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.product-block-description {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.product-block-products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.product-block-product {
+  border: 1px solid grey;
+  padding: 1rem 2rem;
+}

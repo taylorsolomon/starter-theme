@@ -1,0 +1,35 @@
+{#
+/**
+ * Block Name: Product block
+ *
+ * This is the template that displays the product block.
+ */
+#}
+
+{% if is_preview %}
+  <p>I will only appear in the editor.</p>
+{% endif %}
+
+<div id="example-{{ block.id }}" class="product-block">
+  <div class="product-block-inner">
+    <h2 class="product-block-title">{{ fields.title }}</h2>
+    <div class="product-block-description">{{ fields.description }}</div>
+    <div class="product-block-products">
+      {% for product in fields.products %}
+        <div class="product-block-product">
+          <h3>{{product.product_name}}</h3>
+          {{product.product_description}}
+
+          {% if product.product_link %}
+            <a href="{{product.product_link.url}}" target="{{product.product_link.target}}" class="btn btn-primary">{{product.product_link.title}}</a>
+          {% endif %}
+
+          {% if product.product_link_secondary %}
+            <a href="{{product.product_link_secondary.url}}" target="{{product.product_link_secondary.target}}" class="btn btn-primary">{{product.product_link_secondary.title}}</a>
+
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
